@@ -17,11 +17,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
 }
 
 a, button, [role="button"] {
   cursor: pointer;
+}
+
+.typed-cursor:not(:last-child) {
+  display: none !important;
 }
 
 @keyframes marquee {
@@ -32,4 +36,145 @@ a, button, [role="button"] {
 @keyframes marquee-reverse {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
+}
+
+@keyframes drive {
+  0% { transform: translateX(0vw); }
+  100% { transform: translateX(110vw); }
+}
+
+@keyframes drive-reverse {
+  0% { transform: translateX(0vw) scaleX(-1); }
+  100% { transform: translateX(-110vw) scaleX(-1); }
+}
+
+/* From Uiverse.io by KSAplay */ 
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* Landscape section */
+.landscape-section {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.landscape-section * {
+  position: absolute;
+}
+
+
+/* Content section */
+.content-section {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px 0 20px;
+  color: white;
+  z-index: 10;
+}
+
+.weather-info .left-side {
+  font-size: 14pt;
+  font-weight: 700;
+  text-align: left;
+}
+
+.weather-info .right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Uiverse Button V2 */
+.button {
+  width: 160px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0px 15px;
+  background-color: rgb(66, 66, 66);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.bell {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .bell path {
+  fill: white;
+} */
+
+.arrow {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: rgb(77, 77, 77);
+  transition-duration: .2s;
+}
+
+.button:hover .arrow {
+  animation: slide-right .6s ease-out both;
+}
+/* arrow animation */
+@keyframes slide-right {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.button:active {
+  transform: translate(1px , 1px);
+  transition-duration: .2s;
 }

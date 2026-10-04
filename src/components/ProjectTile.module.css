@@ -1,0 +1,46 @@
+.projectTile {
+  height: 22rem;
+  width: 38rem;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+@media (min-width: 768px) {
+  .projectTile {
+    height: 26rem;
+  }
+}
+
+.projectTile img {
+  object-fit: cover;
+}
+
+.projectImage {
+  position: absolute;
+  top: 0;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  width: 17rem !important;
+  max-width: 17rem !important;
+  transform: rotate(-22.5deg);
+  height: unset !important;
+  min-width: unset !important;
+  max-height: unset !important;
+  object-fit: contain !important;
+  left: unset !important;
+  right: 2rem !important;
+  bottom: unset !important;
+  clip-path: inset(0);
+  z-index: 0;
+}
+
+@media (max-width: 480px) {
+  .projectImage {
+    width: clamp(12rem, 40vw, 16rem) !important;
+    right: clamp(-2rem, 2vw, 1.5rem) !important;
+  }
+}
+
+.techIcons {
+  transform: rotate(-22.5deg) translateZ(3rem);
+}

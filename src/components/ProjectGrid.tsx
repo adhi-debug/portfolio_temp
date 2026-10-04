@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Code } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { motion } from 'framer-motion';
@@ -27,41 +28,56 @@ export function ProjectGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="flex flex-col bg-white border border-neutral-200 rounded-[2rem] p-8 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-2 group relative overflow-hidden"
+            className="weather-card group hover:-translate-y-2 transition-transform duration-300 border border-neutral-100"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50/50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-
-            <div className="flex items-center justify-between mb-8">
-              <div className="w-14 h-14 bg-neutral-50 flex items-center justify-center rounded-2xl border border-neutral-100 group-hover:scale-110 transition-transform duration-500">
-                <Code className="w-6 h-6 text-indigo-600" />
-              </div>
-              <Link href={`/projects/${project.slug}`} className="p-3 bg-neutral-50 hover:bg-neutral-100 rounded-full transition-colors">
-                <ArrowRight className="w-5 h-5 text-neutral-600" />
-              </Link>
-            </div>
-            
-            <h3 className="text-2xl font-bold text-neutral-900 mb-3">{project.title}</h3>
-            <p className="text-neutral-500 text-sm mb-8 flex-1 leading-relaxed">
-              {project.shortDescription}
-            </p>
-            
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tags.slice(0, 3).map(tag => (
-                <span key={tag} className="px-3 py-1.5 bg-neutral-100 border border-neutral-200 text-neutral-700 text-xs font-bold rounded-full">
-                  {tag}
-                </span>
-              ))}
-              {project.tags.length > 3 && (
-                <span className="px-3 py-1.5 bg-neutral-100 border border-neutral-200 text-neutral-700 text-xs font-bold rounded-full">
-                  +{project.tags.length - 3}
-                </span>
+            {/* Top Banner Section */}
+            <div className="relative w-full h-[60%] bg-gradient-to-br from-neutral-50 to-white overflow-hidden border-b border-neutral-100">
+              {project.image ? (
+                <>
+                  <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill 
+                    style={{ objectFit: 'cover' }} 
+                    className="group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Subtle overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent h-1/2 pointer-events-none z-0"></div>
+                </>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] group-hover:scale-110 transition-transform duration-500">
+                  <Code className="w-32 h-32 text-neutral-900" />
+                </div>
               )}
+
+              <div className="absolute top-0 left-0 w-full p-6 flex items-start justify-between z-10">
+                <h3 className={`text-xl font-bold leading-tight max-w-[80%] ${project.image ? 'text-white drop-shadow-md' : 'text-neutral-900'}`}>
+                  {project.title}
+                </h3>
+                <Link href={`/projects/${project.slug}`} className="p-2 bg-white rounded-full hover:bg-neutral-50 shadow-sm transition-colors border border-neutral-200 group-hover:border-neutral-300">
+                  <ArrowRight className="w-4 h-4 text-neutral-700" />
+                </Link>
+              </div>
             </div>
             
-            <div className="mt-8 pt-8 border-t border-neutral-100">
-              <Link href={`/projects/${project.slug}`} className="text-indigo-600 font-bold text-sm hover:text-indigo-800 flex items-center gap-2 transition-colors">
-                View full details <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            {/* Bottom Content Section */}
+            <div className="w-full h-[40%] flex flex-col p-6 bg-white">
+              <p className="text-neutral-500 text-sm mb-4 line-clamp-2 text-left w-full font-medium">
+                {project.shortDescription}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 mt-auto w-full">
+                {project.tags.slice(0, 3).map(tag => (
+                  <span key={tag} className="px-2.5 py-1 bg-neutral-50 border border-neutral-200 text-neutral-600 text-[10px] font-bold rounded-md uppercase tracking-wider">
+                    {tag}
+                  </span>
+                ))}
+                {project.tags.length > 3 && (
+                  <span className="px-2.5 py-1 bg-neutral-50 border border-neutral-200 text-neutral-600 text-[10px] font-bold rounded-md">
+                    +{project.tags.length - 3}
+                  </span>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}

@@ -1,46 +1,92 @@
 'use client';
-import React from 'react';
-import { Mail, FileText } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-const GithubIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4" />
-  </svg>
-);
-
-const LinkedinIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  const menuItems = [
+    { name: 'Home', href: '/#home' },
+    { name: 'Skills', href: '/#skills' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Experience', href: '/#experience' }
+  ];
+
   return (
-    <motion.nav 
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
-    >
-      <div className="flex items-center gap-6 px-8 py-4 bg-white/80 backdrop-blur-md border border-neutral-200 shadow-sm rounded-full">
-        <a href="/" className="font-bold text-xl tracking-tighter text-neutral-900 mr-4">VP.</a>
-        <a href="https://github.com/vishmithapoojary84" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-neutral-900 transition-colors">
-          <GithubIcon />
-        </a>
-        <a href="https://linkedin.com/in/vishmitha-poojary-39122a320" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-neutral-900 transition-colors">
-          <LinkedinIcon />
-        </a>
-        <a href="mailto:vishmithapoojary84@gmail.com" className="text-neutral-500 hover:text-neutral-900 transition-colors">
-          <Mail className="w-5 h-5" />
-        </a>
-        <a href="/resume.pdf" target="_blank" className="flex items-center gap-2 text-sm font-bold bg-neutral-900 text-white px-5 py-2.5 rounded-full hover:bg-neutral-800 border border-neutral-900 transition-colors ml-2 shadow-lg shadow-neutral-900/20">
-          <FileText className="w-4 h-4" />
-          Resume
-        </a>
-      </div>
-    </motion.nav>
+    <>
+      <nav className="fixed top-0 left-0 w-full p-6 md:p-8 z-[60] flex justify-end items-center pointer-events-none mix-blend-difference">
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="pointer-events-auto relative z-[60] w-12 h-12 flex flex-col justify-center items-end gap-2 link focus:outline-none group"
+          aria-label="Toggle menu"
+        >
+          <motion.div 
+            animate={{ 
+              rotate: isOpen ? -45 : 0, 
+              y: isOpen ? 10 : 0,
+              width: isOpen ? 32 : 32
+            }}
+            transition={{ duration: 0.3 }}
+            className="h-[2px] bg-white origin-center"
+            style={{ width: '32px' }}
+          />
+          <motion.div 
+            animate={{ opacity: isOpen ? 0 : 1 }}
+            transition={{ duration: 0.3 }}
+            className="w-8 h-[2px] bg-white"
+          />
+          <motion.div 
+            animate={{ 
+              rotate: isOpen ? 45 : 0, 
+              y: isOpen ? -10 : 0,
+              width: isOpen ? 32 : 24
+            }}
+            transition={{ duration: 0.3 }}
+            className="h-[2px] bg-white origin-center group-hover:w-8 transition-all"
+            style={{ width: isOpen ? '32px' : '24px' }}
+          />
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ clipPath: "circle(0% at 100% 0%)" }}
+            animate={{ clipPath: "circle(150% at 100% 0%)" }}
+            exit={{ clipPath: "circle(0% at 100% 0%)" }}
+            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-[55] bg-black/90 flex flex-col items-center justify-center pointer-events-auto"
+          >
+            <ul className="flex flex-col gap-8 text-center">
+              {menuItems.map((item, i) => (
+                <motion.li 
+                  key={item.name}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: 0.1 * i, duration: 0.5, ease: "easeOut" }}
+                >
+                  <a 
+                    href={item.href} 
+                    onClick={() => setIsOpen(false)}
+                    className="text-5xl font-mono font-bold text-white hover:text-purple-400 transition-all duration-300 link block"
+                  >
+                    {item.name}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
