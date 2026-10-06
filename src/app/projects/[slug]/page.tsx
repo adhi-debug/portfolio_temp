@@ -19,7 +19,8 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
   const project = projects.find((p) => p.slug === slug);
   const projectIdx = projects.findIndex((p) => p.slug === slug);
   const navigationProjects = projects.filter(
-    ({ slug: projectSlug }) => projectSlug !== 'blog-platform' && projectSlug !== 'memory-game',
+    ({ slug: projectSlug }) =>
+      projectSlug !== 'blog-platform' && projectSlug !== 'memory-game' && projectSlug !== 'bubble-pop-game',
   );
   const navigationIndex = navigationProjects.findIndex((item) => item.slug === slug);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
