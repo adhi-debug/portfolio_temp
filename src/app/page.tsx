@@ -277,11 +277,11 @@ export default function Home() {
 
       <footer id="contact" className="bg-[var(--ink)] px-4 py-14 text-[var(--paper)] sm:px-10 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-white/55">Leave your details</p>
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-[var(--paper)]">Leave your details</p>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_0.5fr] lg:items-end">
             <h2 className="text-[clamp(3.7rem,12vw,10rem)] font-black uppercase leading-[0.82] tracking-normal">Open the door</h2>
             <div className="space-y-5">
-              <p className="text-xl font-medium leading-tight text-white/76">
+              <p className="text-xl font-medium leading-tight text-[var(--paper)]">
                 Or just write: vishuvishmitha84@gmail.com. A real reply, usually fast.
               </p>
               <a
@@ -295,12 +295,12 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="mt-14 flex flex-col gap-4 border-t border-white/16 pt-6 font-mono text-xs font-bold uppercase tracking-[0.18em] text-white/58 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-14 flex flex-col gap-4 border-t border-white/16 pt-6 font-mono text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] sm:flex-row sm:items-center sm:justify-between">
             <p>© 2026 Vishmitha Poojary</p>
             <div className="flex gap-4">
-              <a href="https://github.com/vishmithapoojary84" target="_blank" rel="noreferrer" className="hover:text-white">GitHub</a>
-              <a href="https://linkedin.com/in/vishmitha-poojary-39122a320" target="_blank" rel="noreferrer" className="hover:text-white">LinkedIn</a>
-              <a href="/Vishmitha%20Resume.pdf" download="Vishmitha-Resume.pdf" className="hover:text-white">Resume</a>
+              <a href="https://github.com/vishmithapoojary84" target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
+              <a href="https://linkedin.com/in/vishmitha-poojary-39122a320" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a>
+              <a href="/Vishmitha%20Resume.pdf" download="Vishmitha-Resume.pdf" className="hover:underline">Resume</a>
             </div>
           </div>
         </div>
