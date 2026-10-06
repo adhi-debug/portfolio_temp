@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail, Sparkles } from 'lucide-react';
-import { useRef } from 'react';
 import { projects } from '@/data/projects';
 import { SkillsMarquee } from '@/components/SkillsMarquee';
 
@@ -83,40 +82,28 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 function HeroCollage() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-  const yOne = useTransform(scrollYProgress, [0, 1], [-30, 45]);
-  const yTwo = useTransform(scrollYProgress, [0, 1], [35, -35]);
-
   return (
-    <div ref={ref} className="relative min-h-[560px] w-full">
-      <motion.div
-        style={{ y: yOne }}
-        className="absolute left-[3%] top-[8%] h-64 w-48 rotate-[-8deg] overflow-hidden border border-[var(--line)] bg-[var(--panel)] shadow-[12px_12px_0_var(--shadow-strong)] sm:h-80 sm:w-60"
-      >
-        <Image src="/avatar.jpeg" alt="Vishmitha Poojary" fill priority sizes="240px" className="object-cover" />
-      </motion.div>
-      <motion.div
-        style={{ y: yTwo }}
-        className="absolute right-[3%] top-[18%] h-56 w-64 rotate-[7deg] overflow-hidden border border-[var(--line)] bg-[var(--panel)] shadow-[-10px_12px_0_var(--accent)] sm:h-72 sm:w-80"
-      >
-        <Image src="/project-trikon.png" alt="Trikon Enterprise Voice AI preview" fill sizes="320px" className="object-cover" />
-      </motion.div>
-      <motion.div
-        style={{ y: yOne }}
-        className="absolute bottom-[10%] left-[28%] h-52 w-72 rotate-[3deg] overflow-hidden border border-[var(--line)] bg-[var(--panel)] shadow-[10px_-10px_0_var(--accent-alt)] sm:h-64 sm:w-96"
-      >
-        <Image src="/project-hospital.png" alt="Hospital Voice Receptionist preview" fill sizes="384px" className="object-cover" />
-      </motion.div>
-      <div className="absolute left-[8%] top-[58%] flex h-28 w-28 rotate-[-14deg] items-center justify-center rounded-full border border-[var(--line)] bg-[var(--ink)] text-center font-mono text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] shadow-[8px_8px_0_var(--accent-warm)]">
-        30+ languages
+    <div className="relative min-h-[560px] w-full overflow-hidden border border-[var(--line)] bg-[#11110f] shadow-[12px_12px_0_var(--shadow)]">
+      <Image
+        src="/hero.png"
+        alt="Vishmitha"
+        fill
+        priority
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover object-[center_20%] grayscale contrast-125 brightness-[0.72]"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-black/10" aria-hidden="true" />
+      <div className="pointer-events-none absolute right-[2%] top-[18%] aspect-square w-64 sm:right-[5%] sm:w-80" aria-hidden="true">
+        <div className="absolute inset-0 rounded-full border border-violet-400/35" />
+        <div className="absolute inset-[13%] rounded-full border border-violet-400/35" />
+        <div className="absolute right-[18%] top-[16%] h-24 w-24 rounded-full bg-violet-400 shadow-[0_0_36px_rgba(167,139,250,0.25)] sm:h-32 sm:w-32" />
+        <div className="absolute left-[4%] top-[47%] h-12 w-12 rounded-full bg-white" />
+        <div className="absolute bottom-[-4%] right-[10%] h-32 w-32 rounded-full border-[22px] border-white bg-transparent sm:h-36 sm:w-36" />
+        <div className="absolute bottom-[24%] right-[39%] h-3 w-3 rounded-full bg-violet-400" />
       </div>
-      <div className="absolute bottom-[2%] right-[12%] flex h-24 w-24 rotate-[10deg] items-center justify-center border border-[var(--line)] bg-[var(--accent)] text-center font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-black">
-        AI + backend
-      </div>
+      <p className="absolute bottom-6 left-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/75">
+        30+ skills / AI engineer
+      </p>
     </div>
   );
 }
@@ -126,7 +113,8 @@ export default function Home() {
 
   return (
     <main id="home" className="min-h-screen bg-[var(--paper)] text-[var(--ink)] selection:bg-[var(--accent)]/30">
-      <section className="grid min-h-screen border-b border-[var(--line)] px-4 pt-28 sm:px-6 lg:grid-cols-[1.04fr_0.96fr] lg:px-10">
+      <section className="grid min-h-screen border-b border-[var(--line)] px-4 pt-28 sm:px-6 lg:grid-cols-[0.96fr_1.04fr] lg:px-10">
+        <HeroCollage />
         <div className="flex flex-col justify-between pb-10">
           <div className="max-w-5xl">
             <Eyebrow>AI Engineer / Full-stack systems</Eyebrow>
@@ -191,7 +179,6 @@ export default function Home() {
           </div>
         </div>
 
-        <HeroCollage />
       </section>
 
       <section id="about" className="grid border-b border-[var(--line)] lg:grid-cols-[0.72fr_1.28fr]">
@@ -213,7 +200,7 @@ export default function Home() {
             <h2 className="mt-5 text-5xl font-black uppercase leading-none sm:text-7xl">Work index</h2>
           </div>
           <p className="max-w-md text-base font-medium text-[var(--muted-strong)]">
-            Real portfolio work, reframed as a sharper project directory with motion, image interrupts, and quick routes into each case study.
+            Selected project work across voice AI, full-stack platforms, and agentic systems.
           </p>
         </div>
 
@@ -290,13 +277,13 @@ export default function Home() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-3 bg-[var(--accent)] px-5 py-4 font-mono text-sm font-black uppercase tracking-[0.16em] text-black transition-transform hover:-translate-y-1"
               >
-                Start a project
+                Contact me
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>
           <div className="mt-14 flex flex-col gap-4 border-t border-white/16 pt-6 font-mono text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] sm:flex-row sm:items-center sm:justify-between">
-            <p>© 2026 Vishmitha Poojary</p>
+            <p>© 2026 Vishmitha</p>
             <div className="flex gap-4">
               <a href="https://github.com/vishmithapoojary84" target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
               <a href="https://linkedin.com/in/vishmitha-poojary-39122a320" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a>

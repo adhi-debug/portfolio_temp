@@ -140,7 +140,7 @@ export function HeroStage3D() {
             <p className="mt-2 max-w-xs text-lg font-black uppercase leading-none">PNG or 3D model can replace this stage</p>
           </div>
           <div className="border border-[var(--line)] bg-[var(--paper)] px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-strong)]">
-            {ready ? 'WebGL live' : 'Loading'}
+              {ready ? 'WebGL live' : 'Loading'}
           </div>
         </div>
       </div>

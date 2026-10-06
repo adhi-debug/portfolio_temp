@@ -82,11 +82,11 @@ export function Navbar() {
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[55] flex flex-col justify-between bg-[var(--ink)] p-6 text-[var(--paper)] sm:p-10"
+            className="fixed inset-0 z-[55] flex flex-col justify-between bg-[var(--paper)] p-6 text-[var(--ink)] sm:p-10"
           >
             <div className="pt-20">
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-white/45">Navigate</p>
-              <ul className="mt-8 divide-y divide-white/15 border-y border-white/15">
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-[var(--muted)]">Navigate</p>
+              <ul className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
                 {menuItems.map((item, index) => (
                   <motion.li
                     key={item.name}
@@ -100,13 +100,13 @@ export function Navbar() {
                       className="group flex items-center justify-between py-5 text-5xl font-black uppercase leading-none transition-colors hover:text-[var(--accent)] sm:text-7xl"
                     >
                       {item.name}
-                      <span className="font-mono text-sm text-white/36 transition-transform group-hover:translate-x-2">0{index + 1}</span>
+                      <span className="font-mono text-sm text-[var(--muted)] transition-transform group-hover:translate-x-2">0{index + 1}</span>
                     </a>
                   </motion.li>
                 ))}
               </ul>
             </div>
-            <div className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-white/48">
+            <div className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
               vishuvishmitha84@gmail.com
             </div>
           </motion.div>
