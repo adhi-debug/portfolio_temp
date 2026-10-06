@@ -170,12 +170,12 @@ export default function Home() {
 
       <section id="about" className="grid border-b border-[var(--line)] lg:grid-cols-[0.72fr_1.28fr]">
         <div className="border-b border-[var(--line)] p-6 sm:p-10 lg:border-b-0 lg:border-r">
-          <Eyebrow>Manifest</Eyebrow>
+          <Eyebrow>About me</Eyebrow>
           <h2 className="mt-6 max-w-md text-4xl font-black uppercase leading-none sm:text-6xl">Human sense. Artificial intelligence.</h2>
         </div>
         <div className="p-6 sm:p-10">
-          <p className="max-w-5xl text-3xl font-semibold leading-tight sm:text-5xl">
-            I care about systems that feel fast, truthful, and useful. Voice agents, LLM workflows, database migrations, realtime calling, and product interfaces all sit in the same room here.
+          <p className="max-w-5xl text-base font-medium leading-relaxed sm:text-lg">
+            I build backend systems, full-stack applications, and AI products. To accelerate my workflow and ship features faster, I leverage AI IDEs to amplify my productivity—going way beyond simple autocomplete. Before I even start coding, I set up an AGENTS.md file to give the AI the exact project context, helping me map out a solid implementation plan. I also automate repetitive tasks by packaging them into SKILL.md files. By treating AI as a highly capable assistant rather than a crutch—planning first, setting strict context, and offloading the busywork—I&apos;m able to significantly boost my output and deliver high-quality code at a much faster pace.
           </p>
         </div>
       </section>
