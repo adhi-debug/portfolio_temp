@@ -142,8 +142,8 @@ export default function Home() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
               <a
-                href="/Vishmitha%20Resume.pdf"
-                download="Vishmitha-Resume.pdf"
+                href="/Vishmitha_Poojary_Resume.pdf"
+                download="Vishmitha_Poojary_Resume.pdf"
                 className="inline-flex items-center border border-[var(--line)] px-5 py-4 font-mono text-sm font-bold uppercase tracking-[0.16em] text-[var(--ink)] transition-colors hover:bg-[var(--panel)]"
               >
                 Resume
@@ -274,7 +274,7 @@ export default function Home() {
             <div className="flex gap-4">
               <a href="https://github.com/vishmithapoojary84" target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
               <a href="https://linkedin.com/in/vishmitha-poojary-39122a320" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a>
-              <a href="/Vishmitha%20Resume.pdf" download="Vishmitha-Resume.pdf" className="hover:underline">Resume</a>
+              <a href="/Vishmitha_Poojary_Resume.pdf" download="Vishmitha_Poojary_Resume.pdf" className="hover:underline">Resume</a>
             </div>
           </div>
         </div>
