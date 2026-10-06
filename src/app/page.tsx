@@ -175,7 +175,7 @@ export default function Home() {
         </div>
         <div className="p-6 sm:p-10">
           <p className="max-w-5xl text-base font-medium leading-relaxed sm:text-lg">
-            I build backend systems, full-stack applications, and AI products. To accelerate my workflow and ship features faster, I leverage AI IDEs to amplify my productivity—going way beyond simple autocomplete. Before I even start coding, I set up an AGENTS.md file to give the AI the exact project context, helping me map out a solid implementation plan. I also automate repetitive tasks by packaging them into SKILL.md files. By treating AI as a highly capable assistant rather than a crutch—planning first, setting strict context, and offloading the busywork—I&apos;m able to significantly boost my output and deliver high-quality code at a much faster pace.
+            I build backend systems, full-stack applications, and AI products. To accelerate my workflow and ship features faster, I leverage AI IDEs to amplify my productivity, going way beyond simple autocomplete. Before I even start coding, I set up an AGENTS.md file to give the AI the exact project context, helping me map out a solid implementation plan. I also automate repetitive tasks by packaging them into SKILL.md files. By treating AI as a highly capable assistant rather than a crutch, and by planning first, setting strict context, and offloading the busywork, I&apos;m able to significantly boost my output and deliver high-quality code at a much faster pace.
           </p>
         </div>
       </section>

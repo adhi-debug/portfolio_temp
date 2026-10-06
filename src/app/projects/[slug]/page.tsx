@@ -18,6 +18,10 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
   const { slug } = use(params);
   const project = projects.find((p) => p.slug === slug);
   const projectIdx = projects.findIndex((p) => p.slug === slug);
+  const navigationProjects = projects.filter(
+    ({ slug: projectSlug }) => projectSlug !== 'blog-platform' && projectSlug !== 'memory-game',
+  );
+  const navigationIndex = navigationProjects.findIndex((item) => item.slug === slug);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!project) {
@@ -25,8 +29,12 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
   }
 
   const gallery = 'gallery' in project && project.gallery ? project.gallery : project.image ? [project.image] : [];
-  const nextProject = projects[(projectIdx + 1) % projects.length];
-  const prevProject = projects[(projectIdx - 1 + projects.length) % projects.length];
+  const nextProject = navigationIndex < 0
+    ? null
+    : navigationProjects[(navigationIndex + 1) % navigationProjects.length];
+  const prevProject = navigationIndex < 0
+    ? null
+    : navigationProjects[(navigationIndex - 1 + navigationProjects.length) % navigationProjects.length];
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % gallery.length);
@@ -180,16 +188,18 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
         </div>
       </section>
 
-      <nav className="grid lg:grid-cols-2">
-        <Link href={`/projects/${prevProject.slug}`} className="group border-b border-[var(--line)] p-6 transition-colors hover:bg-[var(--ink)] hover:text-[var(--paper)] sm:p-10 lg:border-b-0 lg:border-r">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)] group-hover:text-white/48">Previous</p>
-          <h3 className="mt-4 text-3xl font-black uppercase leading-none sm:text-5xl">{prevProject.title}</h3>
-        </Link>
-        <Link href={`/projects/${nextProject.slug}`} className="group p-6 text-right transition-colors hover:bg-[var(--ink)] hover:text-[var(--paper)] sm:p-10">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)] group-hover:text-white/48">Next</p>
-          <h3 className="mt-4 text-3xl font-black uppercase leading-none sm:text-5xl">{nextProject.title}</h3>
-        </Link>
-      </nav>
+      {prevProject && nextProject && (
+        <nav className="grid lg:grid-cols-2">
+          <Link href={`/projects/${prevProject.slug}`} className="group border-b border-[var(--line)] p-6 transition-colors hover:bg-[var(--ink)] hover:text-[var(--paper)] sm:p-10 lg:border-b-0 lg:border-r">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)] group-hover:text-white/48">Previous</p>
+            <h3 className="mt-4 text-3xl font-black uppercase leading-none sm:text-5xl">{prevProject.title}</h3>
+          </Link>
+          <Link href={`/projects/${nextProject.slug}`} className="group p-6 text-right transition-colors hover:bg-[var(--ink)] hover:text-[var(--paper)] sm:p-10">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)] group-hover:text-white/48">Next</p>
+            <h3 className="mt-4 text-3xl font-black uppercase leading-none sm:text-5xl">{nextProject.title}</h3>
+          </Link>
+        </nav>
+      )}
     </main>
   );
 }
