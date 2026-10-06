@@ -83,27 +83,15 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function HeroCollage() {
   return (
-    <div className="relative min-h-[560px] w-full overflow-hidden border border-[var(--line)] bg-[#11110f] shadow-[12px_12px_0_var(--shadow)]">
+    <div className="relative min-h-[560px] w-full overflow-hidden">
       <Image
-        src="/hero.png"
+        src="/hero-cutout.png"
         alt="Vishmitha"
         fill
         priority
         sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover object-[center_20%] grayscale contrast-125 brightness-[0.72]"
+        className="object-contain object-bottom grayscale contrast-110"
       />
-      <div className="pointer-events-none absolute inset-0 bg-black/10" aria-hidden="true" />
-      <div className="pointer-events-none absolute right-[2%] top-[18%] aspect-square w-64 sm:right-[5%] sm:w-80" aria-hidden="true">
-        <div className="absolute inset-0 rounded-full border border-violet-400/35" />
-        <div className="absolute inset-[13%] rounded-full border border-violet-400/35" />
-        <div className="absolute right-[18%] top-[16%] h-24 w-24 rounded-full bg-violet-400 shadow-[0_0_36px_rgba(167,139,250,0.25)] sm:h-32 sm:w-32" />
-        <div className="absolute left-[4%] top-[47%] h-12 w-12 rounded-full bg-white" />
-        <div className="absolute bottom-[-4%] right-[10%] h-32 w-32 rounded-full border-[22px] border-white bg-transparent sm:h-36 sm:w-36" />
-        <div className="absolute bottom-[24%] right-[39%] h-3 w-3 rounded-full bg-violet-400" />
-      </div>
-      <p className="absolute bottom-6 left-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/75">
-        30+ skills / AI engineer
-      </p>
     </div>
   );
 }
@@ -113,8 +101,7 @@ export default function Home() {
 
   return (
     <main id="home" className="min-h-screen bg-[var(--paper)] text-[var(--ink)] selection:bg-[var(--accent)]/30">
-      <section className="grid min-h-screen border-b border-[var(--line)] px-4 pt-28 sm:px-6 lg:grid-cols-[0.96fr_1.04fr] lg:px-10">
-        <HeroCollage />
+      <section className="grid min-h-screen border-b border-[var(--line)] px-4 pt-28 sm:px-6 lg:grid-cols-[1.04fr_0.96fr] lg:px-10">
         <div className="flex flex-col justify-between pb-10">
           <div className="max-w-5xl">
             <Eyebrow>AI Engineer / Full-stack systems</Eyebrow>
@@ -178,7 +165,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
+        <HeroCollage />
       </section>
 
       <section id="about" className="grid border-b border-[var(--line)] lg:grid-cols-[0.72fr_1.28fr]">
