@@ -137,8 +137,6 @@ export default function Home() {
               className="mt-8 text-[clamp(2.5rem,6.8vw,6.5rem)] font-black uppercase leading-[0.9] tracking-normal"
             >
               Vishmitha
-              <br />
-              Poojary
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 18 }}
